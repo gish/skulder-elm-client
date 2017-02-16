@@ -44,7 +44,7 @@ transactionRow debt =
   tr []
     [ td [] [ text (formatTimestamp debt.created_at) ]
     , td [] [ text debt.receiver ]
-    , td [] [ text ( toString debt.amount ) ]
+    , td [] [ text ( toString ( ( toFloat debt.amount ) / 100 ) ) ]
     , td [] [ text debt.description ]
     ]
 
