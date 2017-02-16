@@ -35,3 +35,19 @@ update msg model =
             | description = description
             }
           }, Cmd.none )
+    UpdateReceiver ( receiver ) ->
+      let
+        formData = model.formData
+        sender
+          =  List.filter (\p -> p /= receiver ) model.participants
+          |> List.head
+          |> Maybe.withDefault ""
+      in
+        ( { model
+          | formData =
+            { formData
+            | receiver = receiver
+            , sender = sender
+            }
+          }, Cmd.none )
+

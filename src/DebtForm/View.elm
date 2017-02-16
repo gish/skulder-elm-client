@@ -3,7 +3,7 @@ module DebtForm.View exposing (view)
 import DebtForm.Types exposing (TransactionModel, FormDataModel, TransactionMsg(..))
 import Html exposing (..)
 import Html.Attributes exposing (class, type_, value, name)
-import Html.Events exposing (onInput)
+import Html.Events exposing (onInput, onClick)
 
 view : TransactionModel -> Html TransactionMsg
 view model =
@@ -31,7 +31,11 @@ receiverInput participants receiver =
 receiverRadio : String -> Html TransactionMsg
 receiverRadio participant =
   label []
-    [ input [ name "receiver", type_ "radio", value participant ] []
+    [ input [ name "receiver"
+            , type_ "radio"
+            , value participant
+            , onClick (UpdateReceiver participant)
+            ] []
     , text participant
     ]
 
