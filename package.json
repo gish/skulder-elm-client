@@ -1,0 +1,29 @@
+{
+  "name": "skulder-elm-client",
+  "version": "1.0.0",
+  "description": "A client for debt tracking service written in elm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gish/skulder-elm-client.git"
+  },
+  "author": "Erik Hedberg <erik@hedberg.at>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gish/skulder-elm-client/issues"
+  },
+  "homepage": "https://github.com/gish/skulder-elm-client#readme",
+  "dependencies": {
+    "css-loader": "^0.26.1",
+    "elm-webpack-loader": "^4.2.0",
+    "file-loader": "^0.10.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.14.0",
+    "webpack-dev-middleware": "^1.10.0",
+    "webpack-dev-server": "^1.16.3"
+  }
+}
