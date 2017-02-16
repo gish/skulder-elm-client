@@ -29,8 +29,10 @@ transactionTableHead =
 transactionList : List Debt -> Html Msg
 transactionList debts =
   tbody []
-    ( List.map transactionRow debts )
-
+    ( List.sortBy .created_at debts
+      |> List.reverse
+      |> List.map transactionRow
+    )
 
 transactionRow : Debt -> Html Msg
 transactionRow debt =
