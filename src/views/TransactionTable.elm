@@ -1,5 +1,7 @@
 module Views.TransactionTable exposing (transactionTable)
 
+import Date exposing (..)
+import Date.Format exposing (format)
 import Html exposing (..)
 import Html.Attributes exposing (class)
 import Models exposing (Model, Debt)
@@ -16,10 +18,10 @@ transactionTableHead : Html Msg
 transactionTableHead =
   thead []
     [ tr []
-      [ th [] [ text "Datum" ]
-      , th [] [ text "Namn" ]
-      , th [] [ text "Skuld" ]
-      , th [] [ text "Beskrivning" ]
+      [ th [] [ text "Date" ]
+      , th [] [ text "Name" ]
+      , th [] [ text "Debt" ]
+      , th [] [ text "Description" ]
       ]
     ]
 
@@ -33,8 +35,13 @@ transactionList debts =
 transactionRow : Debt -> Html Msg
 transactionRow debt =
   tr []
-    [ td [] [ text ( toString debt.created_at ) ]
+    [ td [] [ text (formatTimestamp debt.created_at) ]
     , td [] [ text debt.receiver ]
     , td [] [ text ( toString debt.amount ) ]
     , td [] [ text debt.description ]
     ]
+
+formatTimestamp : Int -> String
+formatTimestamp timestamp =
+  Date.fromTime (toFloat timestamp)
+  |> format "%Y/%m/%d"
