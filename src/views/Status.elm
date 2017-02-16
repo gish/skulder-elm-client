@@ -1,6 +1,7 @@
 module Views.Status exposing (status)
 
 import Html exposing (..)
+import Html.Attributes exposing (class)
 import List exposing (head, tail, foldr, sum, filter, reverse)
 import List.Extra exposing (unique)
 import Messages exposing (Msg(..))
@@ -8,9 +9,14 @@ import Models exposing (Model, Debt)
 
 status : List Debt -> Html Msg
 status debts =
-  p []
-    [ text (getUserInDebt debts)
-    , text (toString (getHighestDebt debts))
+  div [ class "row" ]
+    [ div [ class "col-xs-12" ]
+      [ h3 [] [ text "Status" ]
+      , p []
+          [ text (getUserInDebt debts)
+          , text (toString (getHighestDebt debts))
+          ]
+      ]
     ]
 
 

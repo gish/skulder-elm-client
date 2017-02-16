@@ -9,9 +9,14 @@ import Messages exposing (Msg(..))
 
 transactionTable : List Debt -> Html Msg
 transactionTable debts =
-  table [ class "table table-striped table-condensed table-bordered" ]
-    [ transactionTableHead
-    , transactionList debts ]
+  div [ class "row" ]
+    [ div [ class "col-xs-12" ]
+      [ h3 [] [ text "Transactions" ]
+      , table [ class "table table-striped table-condensed table-bordered" ]
+          [ transactionTableHead
+          , transactionList debts ]
+      ]
+    ]
 
 
 transactionTableHead : Html Msg
