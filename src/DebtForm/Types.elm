@@ -29,5 +29,7 @@ initialModel =
   }
 
 
-type TransactionMsg =
-  NoOp
+type TransactionMsg
+  = UpdateShare String
+  | UpdateAmount String
+  | UpdateDescription String
