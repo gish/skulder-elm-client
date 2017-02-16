@@ -1,5 +1,6 @@
 module Update exposing (..)
 
+import List.Extra exposing (unique)
 import Messages exposing (Msg(..))
 import Models exposing (..)
 
@@ -9,6 +10,21 @@ update msg model =
     NoOp ->
       ( model, Cmd.none )
     OnFetchDebts ( Ok newDebts ) ->
-      ( { model | debts = newDebts }, Cmd.none )
+      ( onFetchDebts model newDebts, Cmd.none )
     OnFetchDebts ( Err error ) ->
       ( model, Cmd.none )
+
+
+onFetchDebts : Model -> List Debt -> Model
+onFetchDebts model debts =
+  let
+    newParticipants = List.map .receiver debts |> unique
+    transaction = model.transaction
+  in
+    { model
+    | debts = debts
+    , transaction =
+      { transaction
+      | participants = newParticipants
+      }
+    }
