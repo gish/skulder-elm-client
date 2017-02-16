@@ -2,8 +2,7 @@ module DebtForm.Types exposing (..)
 
 
 type alias TransactionModel =
-  { sender : String
-  , receiver : String
+  { participants : List String
   , formData : FormDataModel
   }
 
@@ -19,8 +18,7 @@ type alias FormDataModel =
 
 initialModel : TransactionModel
 initialModel =
-  { sender = ""
-  , receiver = ""
+  { participants = []
   , formData =
     { amount = -1
     , sender = ""

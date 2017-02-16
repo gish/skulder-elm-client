@@ -2,7 +2,7 @@ module DebtForm.View exposing (view)
 
 import DebtForm.Types exposing (TransactionModel, FormDataModel)
 import Html exposing (..)
-import Html.Attributes exposing (class, type_, value)
+import Html.Attributes exposing (class, type_, value, name)
 import Messages exposing (Msg(..))
 
 view : TransactionModel -> Html Msg
@@ -11,6 +11,7 @@ view model =
     [ div [ class "col-xs-12" ]
       [ form []
         [ h3 [] [ text "Add debt" ]
+        , receiverInput model.participants model.formData.receiver
         , shareInput model.formData.share
         , amountInput model.formData.amount
         , descriptionInput model.formData.description
@@ -18,6 +19,20 @@ view model =
           [ text "Add transaction" ]
         ]
       ]
+    ]
+
+
+receiverInput : List String -> String -> Html Msg
+receiverInput participants receiver =
+  div [ class "form-group form-group-sm" ]
+    (List.map receiverRadio participants)
+
+
+receiverRadio : String -> Html Msg
+receiverRadio participant =
+  label []
+    [ input [ name "receiver", type_ "radio", value participant ] []
+    , text participant
     ]
 
 
