@@ -82,7 +82,6 @@ descriptionInput description =
     [ label [] [ text "for" ]
     , div [ class "input-group" ]
         [ input [ class "input-group"
-                , type_ "tel"
                 , value description
                 , onInput UpdateDescription
                 ] []
