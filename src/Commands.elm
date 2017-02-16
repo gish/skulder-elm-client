@@ -13,7 +13,7 @@ fetchAll =
 
 fetchAllUrl : String
 fetchAllUrl =
-  "http://skulder.gish.se/api/v1/transactions"
+  "http://localhost:4000/transactions"
 
 
 collectionDecoder : Decode.Decoder (List Debt)

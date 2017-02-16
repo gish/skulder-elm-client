@@ -4,6 +4,7 @@
   "description": "A client for debt tracking service written in elm",
   "main": "index.js",
   "scripts": {
+    "api": "json-server --port 4000 dev-db.js",
     "build": "webpack",
     "watch": "webpack --watch",
     "dev": "webpack-dev-server --port 3000"
@@ -27,5 +28,10 @@
     "webpack": "^1.14.0",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-dev-server": "^1.16.3"
+  },
+  "devDependencies": {
+    "faker": "^3.1.0",
+    "json-server": "^0.9.5",
+    "uuid-v4": "^0.1.0"
   }
 }
