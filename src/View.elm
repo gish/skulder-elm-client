@@ -6,15 +6,14 @@ import Messages exposing (Msg(..))
 import Models exposing (Model, Debt)
 import Views.Status exposing (status)
 import Views.TransactionTable exposing (transactionTable)
+import DebtForm.View exposing (..)
 
 view : Model -> Html Msg
 view model =
   div [ class "container" ]
-    [ div [ class "col-xs-12" ]
-      [ h3 [] [ text "Status" ]
-      , status model.debts
-      , h3 [] [ text "Transaktioner" ]
-      , transactionTable model.debts ]
+    [ status model.debts
+    , DebtForm.View.view model.transaction
+    , transactionTable model.debts
     ]
 
 
