@@ -4,7 +4,7 @@
   "description": "A client for debt tracking service written in elm",
   "main": "index.js",
   "scripts": {
-    "api": "json-server --port 4000 dev-db.js",
+    "api": "node api.js",
     "build": "webpack",
     "watch": "webpack --watch",
     "dev": "webpack-dev-server --port 3000"
