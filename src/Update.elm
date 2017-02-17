@@ -27,11 +27,16 @@ onFetchDebts model debts =
   let
     newParticipants = List.map .receiver debts |> unique
     transaction = model.transaction
+    formData = transaction.formData
   in
     { model
     | debts = debts
     , transaction =
       { transaction
       | participants = newParticipants
+      , formData =
+        { formData
+        | receiver = Maybe.withDefault "" (List.head newParticipants)
+        }
       }
     }
