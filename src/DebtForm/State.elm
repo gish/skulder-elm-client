@@ -1,6 +1,7 @@
 module DebtForm.State exposing (..)
 
 import DebtForm.Types exposing (..)
+import DebtForm.Rest exposing (post)
 
 update : TransactionMsg -> TransactionModel -> ( TransactionModel, Cmd TransactionMsg )
 update msg model =
@@ -50,4 +51,7 @@ update msg model =
             , sender = sender
             }
           }, Cmd.none )
-
+    PostForm ( formData ) ->
+      ( model, Cmd.batch [ post formData ] )
+    OnPost _ ->
+      ( model, Cmd.none)

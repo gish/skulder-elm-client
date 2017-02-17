@@ -1,7 +1,7 @@
 module Commands exposing (..)
 
 import Http
-import Json.Decode as Decode exposing (field)
+import Json.Decode as Decode
 import Models exposing (Debt)
 import Messages exposing (Msg(..))
 
@@ -24,9 +24,9 @@ collectionDecoder =
 debtDecoder : Decode.Decoder Debt
 debtDecoder =
   Decode.map6 Debt
-    (field "amount" Decode.int)
-    (field "created_at" Decode.int)
-    (field "description" Decode.string)
-    (field "id" Decode.string)
-    (field "receiver" Decode.string)
-    (field "sender" Decode.string)
+    (Decode.field "amount" Decode.int)
+    (Decode.field "created_at" Decode.int)
+    (Decode.field "description" Decode.string)
+    (Decode.field "id" Decode.string)
+    (Decode.field "receiver" Decode.string)
+    (Decode.field "sender" Decode.string)

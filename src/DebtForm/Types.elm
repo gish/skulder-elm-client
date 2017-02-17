@@ -1,5 +1,6 @@
 module DebtForm.Types exposing (..)
 
+import Http exposing (..)
 
 type alias TransactionModel =
   { participants : List String
@@ -34,3 +35,5 @@ type TransactionMsg
   | UpdateAmount String
   | UpdateDescription String
   | UpdateReceiver String
+  | PostForm FormDataModel
+  | OnPost ( Result Http.Error () )

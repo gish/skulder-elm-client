@@ -9,15 +9,13 @@ view : TransactionModel -> Html TransactionMsg
 view model =
   div [ class "row" ]
     [ div [ class "col-xs-12" ]
-      [ form []
-        [ h3 [] [ text "Add debt" ]
-        , receiverInput model.participants model.formData.receiver
-        , (shareInput model.formData.share)
-        , amountInput model.formData.amount
-        , descriptionInput model.formData.description
-        , button [ class "btn btn-primary pull-right", type_ "submit" ]
-          [ text "Add transaction" ]
-        ]
+      [ h3 [] [ text "Add debt" ]
+      , receiverInput model.participants model.formData.receiver
+      , (shareInput model.formData.share)
+      , amountInput model.formData.amount
+      , descriptionInput model.formData.description
+      , button [ class "btn btn-primary pull-right", type_ "submit", onClick (PostForm model.formData) ]
+        [ text "Add transaction" ]
       ]
     ]
 
