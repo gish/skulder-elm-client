@@ -16,7 +16,7 @@ status debts =
       , p []
           [ text (getUserInDebt debts)
           , text " owes "
-          , text ( toString ( formatAmount ( getHighestDebt debts ) ) )
+          , text ( toString ( formatAmount ( getDebtByUserId debts ( getUserInDebt debts ) ) ) )
           , text " SEK."
           ]
       ]
@@ -33,14 +33,6 @@ getDebtByUserId debts userId =
   filter (matchesId userId) debts
     |> List.map .amount
     |> sum
-
-
-getHighestDebt : List Debt -> Int
-getHighestDebt debts =
-  getUniqueUserIds debts
-  |> List.map (getDebtByUserId debts)
-  |> foldr (-) 0
-  |> abs
 
 
 getUniqueUserIds : List Debt -> List String
