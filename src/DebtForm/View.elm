@@ -47,7 +47,7 @@ shareInput share =
     div [ class "form-group form-group-sm" ]
       [ label [] [ text "owes" ]
       , div [ class "input-group" ]
-        [ input [ class "input-group"
+        [ input [ class "form-control"
                 , type_ "tel"
                 , value parsedShare
                 , onInput UpdateShare
@@ -65,7 +65,7 @@ amountInput amount =
     div [ class "form-group form-group-sm" ]
       [ label [] [ text "of" ]
       , div [ class "input-group" ]
-        [ input [ class "input-group"
+        [ input [ class "form-control"
                 , type_ "tel"
                 , value parsedAmount
                 , onInput UpdateAmount
@@ -79,10 +79,8 @@ descriptionInput : String -> Html TransactionMsg
 descriptionInput description =
   div [ class "form-group form-group-sm" ]
     [ label [] [ text "for" ]
-    , div [ class "input-group" ]
-        [ input [ class "input-group"
-                , value description
-                , onInput UpdateDescription
-                ] []
-      ]
+    , input [ class "form-control"
+        , value description
+        , onInput UpdateDescription
+        ] []
     ]
