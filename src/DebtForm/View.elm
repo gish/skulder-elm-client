@@ -28,15 +28,15 @@ receiverInput participants receiver =
 
 receiverRadio : String -> String -> Html TransactionMsg
 receiverRadio receiver participant =
-  label []
-    [ input [ name "receiver"
-            , checked (receiver == participant)
-            , type_ "radio"
-            , value participant
-            , onClick (UpdateReceiver participant)
-            ] []
-    , text participant
-    ]
+  label [ class "radio-inline" ]
+      [ input [ name "receiver"
+              , checked (receiver == participant)
+              , type_ "radio"
+              , value participant
+              , onClick (UpdateReceiver participant)
+              ] []
+      , text participant
+      ]
 
 
 shareInput : Int -> Html TransactionMsg
