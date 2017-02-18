@@ -5,6 +5,7 @@ import Http exposing (..)
 type alias TransactionModel =
   { participants : List String
   , formData : FormDataModel
+  , isPosting : Bool
   }
 
 
@@ -30,6 +31,7 @@ initialModel : TransactionModel
 initialModel =
   { participants = []
   , formData = initialFormData
+  , isPosting = False
   }
 
 

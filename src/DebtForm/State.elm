@@ -52,6 +52,9 @@ update msg model =
             }
           }, Cmd.none )
     PostForm ( formData ) ->
-      ( model, Cmd.batch [ post formData ] )
+      ( { model | isPosting = True }, Cmd.batch [ post formData ] )
     OnPost _ ->
-      ( { model | formData = DebtForm.Types.initialFormData }, Cmd.none )
+      ( { model
+          | formData = DebtForm.Types.initialFormData
+          , isPosting = False
+        }, Cmd.none )

@@ -2,7 +2,7 @@ module DebtForm.View exposing (view)
 
 import DebtForm.Types exposing (TransactionModel, FormDataModel, TransactionMsg(..))
 import Html exposing (..)
-import Html.Attributes exposing (class, type_, value, name, checked)
+import Html.Attributes exposing (class, type_, value, name, checked, disabled)
 import Html.Events exposing (onInput, onClick)
 
 view : TransactionModel -> Html TransactionMsg
@@ -14,8 +14,12 @@ view model =
       , (shareInput model.formData.share)
       , amountInput model.formData.amount
       , descriptionInput model.formData.description
-      , button [ class "btn btn-primary pull-right", type_ "submit", onClick (PostForm model.formData) ]
-        [ text "Add transaction" ]
+      , button [ class "btn btn-primary pull-right"
+               , type_ "submit"
+               , onClick (PostForm model.formData)
+               , disabled model.isPosting
+               ]
+        [ text (if model.isPosting then "Adding..." else "Add transaction") ]
       ]
     ]
 
