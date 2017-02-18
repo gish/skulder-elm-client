@@ -54,4 +54,4 @@ update msg model =
     PostForm ( formData ) ->
       ( model, Cmd.batch [ post formData ] )
     OnPost _ ->
-      ( model, Cmd.none)
+      ( { model | formData = DebtForm.Types.initialFormData }, Cmd.none )

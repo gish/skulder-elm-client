@@ -16,17 +16,20 @@ type alias FormDataModel =
   , description : String
   }
 
+initialFormData : FormDataModel
+initialFormData =
+  { amount = -1
+  , sender = ""
+  , receiver = ""
+  , share = -1
+  , description = ""
+  }
+
 
 initialModel : TransactionModel
 initialModel =
   { participants = []
-  , formData =
-    { amount = -1
-    , sender = ""
-    , receiver = ""
-    , share = -1
-    , description = ""
-    }
+  , formData = initialFormData
   }
 
 
