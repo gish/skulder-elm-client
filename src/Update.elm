@@ -1,6 +1,6 @@
 module Update exposing (..)
 
-import Commands exposing (fetchAll)
+import Commands exposing (deleteTransaction, fetchAll )
 import DebtForm.State exposing (update)
 import DebtForm.Types exposing (..)
 import List.Extra exposing (unique)
@@ -16,6 +16,10 @@ update msg model =
       ( onFetchDebts model newDebts, Cmd.none )
     OnFetchDebts ( Err error ) ->
       ( model, Cmd.none )
+    DeleteTransaction id ->
+      ( model, deleteTransaction id )
+    OnDeleteTransaction ( _ ) ->
+      ( model , fetchAll )
     TransactionMsg ( OnPost msg ) ->
       let
         ( updatedTransaction, cmd) =

@@ -4,6 +4,7 @@ import Date exposing (..)
 import Date.Format exposing (format)
 import Html exposing (..)
 import Html.Attributes exposing (class)
+import Html.Events exposing (onClick)
 import Models exposing (Model, Debt)
 import Messages exposing (Msg(..))
 import Utils.Amount exposing (formatAmount)
@@ -28,6 +29,7 @@ transactionTableHead =
       , th [] [ text "Name" ]
       , th [] [ text "Debt" ]
       , th [] [ text "Description" ]
+      , th [] []
       ]
     ]
 
@@ -47,7 +49,16 @@ transactionRow debt =
     , td [] [ text debt.receiver ]
     , td [] [ text ( toString ( formatAmount debt.amount ) ) ]
     , td [] [ text debt.description ]
+    , td [] [ deleteButton debt.id ]
     ]
+
+
+deleteButton : String -> Html Msg
+deleteButton transactionId =
+  button [ class "btn btn-default btn-xs"
+         , onClick ( DeleteTransaction transactionId )
+         ] [ text "×" ]
+
 
 formatTimestamp : Int -> String
 formatTimestamp timestamp =

@@ -6,5 +6,7 @@ import DebtForm.Types
 
 type Msg
   = NoOp
-  | OnFetchDebts (Result Http.Error (List Debt))
+  | DeleteTransaction String
+  | OnDeleteTransaction ( Result Http.Error () )
+  | OnFetchDebts ( Result Http.Error ( List Debt ) )
   | TransactionMsg DebtForm.Types.TransactionMsg
