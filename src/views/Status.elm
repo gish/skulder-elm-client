@@ -14,7 +14,9 @@ status debts =
       [ h3 [] [ text "Status" ]
       , p []
           [ text (getUserInDebt debts)
-          , text (toString (getHighestDebt debts))
+          , text " owes "
+          , text ( toString ( ( toFloat ( getHighestDebt debts ) ) / 100 ) )
+          , text " SEK."
           ]
       ]
     ]
