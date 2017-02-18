@@ -1,6 +1,8 @@
 module Update exposing (..)
 
+import Commands exposing (fetchAll)
 import DebtForm.State exposing (update)
+import DebtForm.Types exposing (..)
 import List.Extra exposing (unique)
 import Messages exposing (Msg(..))
 import Models exposing (..)
@@ -14,6 +16,12 @@ update msg model =
       ( onFetchDebts model newDebts, Cmd.none )
     OnFetchDebts ( Err error ) ->
       ( model, Cmd.none )
+    TransactionMsg ( OnPost msg ) ->
+      let
+        ( updatedTransaction, cmd) =
+          DebtForm.State.update (OnPost msg) model.transaction
+      in
+         ( { model | transaction = updatedTransaction }, Cmd.batch [fetchAll, ( Cmd.map TransactionMsg cmd )] )
     TransactionMsg subMsg ->
       let
         ( updatedTransaction, cmd) =
