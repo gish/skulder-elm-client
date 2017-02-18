@@ -6,6 +6,7 @@ import Html exposing (..)
 import Html.Attributes exposing (class)
 import Models exposing (Model, Debt)
 import Messages exposing (Msg(..))
+import Utils.Amount exposing (formatAmount)
 
 transactionTable : List Debt -> Html Msg
 transactionTable debts =
@@ -44,7 +45,7 @@ transactionRow debt =
   tr []
     [ td [] [ text (formatTimestamp debt.created_at) ]
     , td [] [ text debt.receiver ]
-    , td [] [ text ( toString ( ( toFloat debt.amount ) / 100 ) ) ]
+    , td [] [ text ( toString ( formatAmount debt.amount ) ) ]
     , td [] [ text debt.description ]
     ]
 

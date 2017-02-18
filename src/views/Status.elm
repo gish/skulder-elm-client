@@ -6,6 +6,7 @@ import List exposing (head, tail, foldr, sum, filter, reverse)
 import List.Extra exposing (unique)
 import Messages exposing (Msg(..))
 import Models exposing (Model, Debt)
+import Utils.Amount exposing (formatAmount)
 
 status : List Debt -> Html Msg
 status debts =
@@ -15,7 +16,7 @@ status debts =
       , p []
           [ text (getUserInDebt debts)
           , text " owes "
-          , text ( toString ( ( toFloat ( getHighestDebt debts ) ) / 100 ) )
+          , text ( toString ( formatAmount ( getHighestDebt debts ) ) )
           , text " SEK."
           ]
       ]
